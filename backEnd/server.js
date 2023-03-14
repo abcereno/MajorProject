@@ -6,8 +6,7 @@ const app = express();
 const port = 3000;
 const bodyParser = require('body-parser');
 const postsData = require("./data/posts.json");
-const companyData = require("./data/companyData.json");
-const userData = require("./data/userData.json");
+const registeredData = require("./data/registeredData.json");
 
 // initializing path and URL
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -26,51 +25,37 @@ app.post('/posts', (req, res) => {
   postsData.unshift({
     ...formData,
     id:('100' + (postsData.length + 1).toString())
-});;
+});
   fs.writeFileSync('./data/posts.json', JSON.stringify(postsData));
   console.log(userData);
 
   // Send a response to the client
   res.send('Form submitted successfully!');
 });
-app.post('/submit-form-user', (req, res) => {
-  const formData = req.body;
-  userData.unshift({
-    ...formData,
-    id:('100' + (userData.length + 1).toString())
-});;
-  fs.writeFileSync('./data/userData.json', JSON.stringify(userData));
-  console.log(userData);
-
-  // Send a response to the client
-  res.send('Form submitted successfully!');
-});
-// Endpoints - form for company
+// Endpoints - form for registered
 app.post('/submit-form-company', (req, res) => {
   const formData = req.body;
-  companyData.unshift({
+  registeredData.unshift({
     ...formData,
-    id:('100' + (companyData.length + 1).toString())
-});;
-  fs.writeFileSync('./data/companyData.json', JSON.stringify(companyData));
-  console.log(companyData);
+    id:('100' + (registeredData.length + 1).toString())
+});
+  fs.writeFileSync('./data/registeredData.json', JSON.stringify(registeredData));
+  console.log(registeredData);
 
   // Send a response to the client
   res.send('Form submitted successfully!');
 });
 
 app.get('/posts', (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
   const posts = fs.readFileSync('./data/posts.json');
   res.send(JSON.parse(posts));
 });
-app.get('/userData', (req, res) => {
-  const userData = fs.readFileSync('./data/userData.json');
-  res.send(JSON.parse(userData));
-});
 
-app.get('/companyData', (req, res) => {
-  const companyData = fs.readFileSync('./data/companyData.json');
-  res.send(JSON.parse(companyData));
+app.get('/registeredData', (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  const registeredData = fs.readFileSync('./data/registeredData.json');
+  res.send(JSON.parse(registeredData));
 });
 
 // Start the server and listen on the specified port
