@@ -1,1 +1,1 @@
-[]
+[{"CustomerID":"1002","Service":"laundry","ServiceProvider":"bernards laundry","Price":"130","TimeStarted":"2023-03-27T10:31:22.666Z","Timer":"2023-03-28T18:31","TimeRemaining":"","id":"1002"},{"CustomerID":"1002","Service":"Wash and Dry","ServiceProvider":"Bernard's Laundry","Price":"130","TimeStarted":"2023-03-27T10:26:32.625Z","Timer":"2023-03-28T18:28","TimeRemaining":"","Orders":[],"id":"1001"}]
