@@ -25,7 +25,7 @@ function App() {
 
   return (
     <div className="vh-100">
-      <BrowserRouter>
+      <BrowserRouter basename="/MajorProject">
         <Navibar />
         <Routes>
           <Route path="/" element={<Home />} />
